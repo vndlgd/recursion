@@ -1,5 +1,4 @@
 function fibs(n) {
-  // write code here
   if (n === 0) {
     return [];
   } else if (n === 1) {
@@ -17,8 +16,18 @@ function fibs(n) {
   return array;
 }
 
-console.log(fibs(8));
-
-function fibsRec(n) {
-  // write code here
+function fibsRec(n, array = [0, 1]) {
+  let len = array.length;
+  if (n < 2) {
+    return array.slice(0, n);
+  } else {
+    if (len < n) {
+      return fibsRec(n, array.concat(array[len - 2] + array[len - 1]));
+    } else {
+      return array;
+    }
+  }
 }
+
+console.log(fibs(8));
+console.log(fibsRec(8));
